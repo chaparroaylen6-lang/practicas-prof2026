@@ -1,0 +1,863 @@
+/* --- VARIABLES DE COLOR Y TIPOGRAFÍA --- */
+:root {
+  --primary-color: #0056b3; /* Azul médico confiable */
+  --secondary-color: #00a8cc; /* Celeste para acentos */
+  --text-dark: #333333;
+  --text-light: #666666;
+  --bg-light: #f8faff;
+  --white: #ffffff;
+  --shadow: 0 10px 30px rgba(0, 86, 179, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  background: var(--white);
+  box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 15px 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nav-logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo i {
+  color: var(--secondary-color);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--secondary-color);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.nav-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--primary-color);
+  transition: var(--transition);
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6); /* Oscurece la imagen para que el texto resalte */
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  z-index: 1;
+}
+
+.hero-content {
+  max-width: 600px;
+  color: var(--white);
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.features {
+  display: flex;
+  gap: 20px;
+}
+
+.feature {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 10px 20px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+/* --- CARDS INFO SECTION --- */
+.cards-section {
+  margin-top: -50px; /* Sube las tarjetas sobre el Hero */
+  position: relative;
+  z-index: 2;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--white);
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: var(--transition);
+  border-top: 4px solid var(--primary-color);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-icon {
+  font-size: 40px;
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.card p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* --- SECCIONES GENERALES --- */
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  color: var(--text-light);
+}
+
+.about-section, .doctors-section, .services-section, .testimonials-section, .contact-section {
+  padding: 80px 0;
+}
+
+.services-section, .testimonials-section {
+  background-color: var(--bg-light);
+}
+
+/* --- DOCTORES & TESTIMONIOS (GRID DINÁMICO) --- */
+.doctors-container, .testimonials-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* Tarjeta de Doctor */
+.doctor-card {
+  background: var(--white);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  text-align: center;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+}
+
+.doctor-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-bottom: 3px solid var(--secondary-color);
+}
+
+.doctor-info {
+  padding: 20px;
+}
+
+.doctor-info h3 {
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.doctor-info .specialty {
+  display: inline-block;
+  background: var(--bg-light);
+  color: var(--secondary-color);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.doctor-info p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* Tarjeta de Testimonio */
+.testimonial-card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '\201C'; /* Comillas */
+  font-size: 60px;
+  color: var(--bg-light);
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-family: serif;
+}
+
+.testimonial-card .content {
+  color: var(--text-light);
+  font-style: italic;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.patient-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.patient-info img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--secondary-color);
+}
+
+.patient-info h4 {
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+.patient-info span {
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+/* --- BOTONES --- */
+.btn-primary {
+  display: inline-block;
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  .nav-menu.active {
+    display: flex;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .features {
+    flex-direction: column;
+  }
+  .cards-section {
+    margin-top: 30px;
+  }
+}
+
+/* ==========================================================================
+   NUEVA SECCIÓN DE CONTACTO PROFESIONAL
+   ========================================================================== */
+.contact-section {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+/* --- COLUMNA IZQUIERDA: TARJETAS DE INFORMACIÓN --- */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--bg-light);
+  padding: 22px;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-color);
+  transition: var(--transition);
+}
+
+/* Efecto interactivo al pasar el mouse */
+.contact-item:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow);
+}
+
+.contact-item i {
+  font-size: 22px;
+  color: var(--primary-color);
+  background: var(--white);
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 86, 179, 0.08);
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-item h3 {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.contact-item p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* --- COLUMNA DERECHA: TARJETA DEL FORMULARIO --- */
+.contact-form {
+  background: var(--white);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 86, 179, 0.05);
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 20px;
+  border: 2px solid #e2e8f0; /* Borde sutil */
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  outline: none;
+}
+
+/* Estilo para los placeholders */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #a0aec0;
+}
+
+/* Efecto de enfoque (Focus) moderno en los inputs */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--primary-color);
+  background-color: var(--white);
+  box-shadow: 0 0 0 4px rgba(0, 86, 179, 0.15); /* Anillo de luz suave */
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* Ajuste específico para que el botón ocupe todo el ancho en el formulario */
+.contact-form .btn-primary {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 10px;
+  margin-top: 5px;
+  box-shadow: 0 4px 15px rgba(0, 86, 179, 0.2);
+}
+
+
+/* --- RESPONSIVE DESIGN (DESKTOP) --- */
+@media (min-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr 1.2fr; /* Lado a lado perfecto */
+    align-items: start;
+    gap: 50px;
+  }
+}
+
+/* ==========================================================================
+   FOOTER MODERNO Y PROFESIONAL
+   ========================================================================== */
+.footer {
+  background-color: #001f3f; /* Un azul marino muy oscuro y elegante */
+  color: var(--white);
+  padding: 70px 0 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.footer-section h3 {
+  color: var(--white);
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+/* Línea decorativa sutil debajo de cada título del footer */
+.footer-section h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background-color: var(--secondary-color);
+  border-radius: 2px;
+}
+
+.footer-section p {
+  color: #a0aec0; /* Gris azulado para que no canse la vista */
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Enlaces de navegación rápida */
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 12px;
+}
+
+.footer-section ul li a {
+  color: #a0aec0;
+  text-decoration: none;
+  transition: var(--transition);
+  display: inline-block;
+}
+
+/* Efecto al pasar el mouse: se ilumina y se mueve un poco a la derecha */
+.footer-section ul li a:hover {
+  color: var(--secondary-color);
+  transform: translateX(5px);
+}
+
+/* Iconos de contacto dentro del footer */
+.footer-section ul li i {
+  color: var(--secondary-color);
+  margin-right: 8px;
+  width: 16px;
+  text-align: center;
+}
+
+/* --- REDES SOCIALES --- */
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.05); /* Círculo semitransparente */
+  color: var(--white);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+/* Efecto de salto en las redes sociales */
+.social-links a:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-5px);
+}
+
+/* --- COPYRIGHT (Parte inferior) --- */
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria muy suave */
+  color: #a0aec0;
+  font-size: 0.9rem;
+}
+
+
+/* ==========================================================================
+   BOTÓN FLOTANTE DE WHATSAPP
+   ========================================================================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25d366; /* Verde oficial de WhatsApp */
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  z-index: 1000;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+/* Animación de latido y giro ligero al pasar el cursor */
+.whatsapp-float:hover {
+  transform: scale(1.1) rotate(5deg);
+  background-color: #20b858;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+  color: white; /* Evita que el ícono cambie de color */
+}
+
+/* ==========================================================================
+   SECCIÓN: SOBRE NOSOTROS (ABOUT)
+   ========================================================================== */
+.about-section {
+  padding: 100px 0;
+  background-color: var(--white);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* En pantallas grandes, divide mitad imagen y mitad texto */
+@media (min-width: 992px) {
+  .about-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Efecto decorativo en la imagen */
+.about-image {
+  position: relative;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+  z-index: 2;
+  object-fit: cover;
+}
+
+/* Cuadrado de fondo desfasado para darle un toque moderno */
+.about-image::after {
+  content: '';
+  position: absolute;
+  bottom: -25px;
+  right: -25px;
+  width: 80%;
+  height: 80%;
+  background-color: var(--secondary-color);
+  border-radius: 20px;
+  z-index: 0;
+  opacity: 0.15;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.about-text > p {
+  color: var(--text-light);
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Cuadrícula para los beneficios (médicos, instalaciones, etc.) */
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+  margin: 35px 0;
+}
+
+@media (min-width: 768px) {
+  .about-features {
+    grid-template-columns: 1fr 1fr; /* 2x2 en pantallas medianas/grandes */
+  }
+}
+
+.about-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.about-feature i {
+  color: var(--primary-color);
+  font-size: 22px;
+  background: var(--bg-light);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 86, 179, 0.08);
+  transition: var(--transition);
+}
+
+.about-feature:hover i {
+  background: var(--primary-color);
+  color: var(--white);
+  transform: rotate(10deg);
+}
+
+.about-feature h4 {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.about-feature p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   SECCIÓN: SERVICIOS MÉDICOS
+   ========================================================================== */
+.services-section {
+  padding: 100px 0;
+  background-color: var(--bg-light); /* Fondo sutil para que las tarjetas resalten */
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.service-card {
+  background: var(--white);
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación elástica suave */
+  border: 1px solid rgba(0, 86, 179, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de línea animada superior */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--secondary-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-15px);
+  box-shadow: var(--shadow);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1); /* La línea se dibuja al pasar el mouse */
+}
+
+.service-card i {
+  font-size: 45px;
+  color: var(--primary-color);
+  margin-bottom: 25px;
+  display: inline-block;
+  transition: var(--transition);
+  background: var(--bg-light);
+  width: 90px;
+  height: 90px;
+  line-height: 90px;
+  border-radius: 50%;
+}
+
+/* El icono crece e invierte colores al hacer hover */
+.service-card:hover i {
+  transform: scale(1.1);
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.service-card h3 {
+  font-size: 1.35rem;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.service-card p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
