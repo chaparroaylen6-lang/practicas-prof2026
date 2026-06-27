@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Vocacional Interactivo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="bg-menu" class="bg-layer active"></div>
+    <div id="bg-questions" class="bg-layer"></div>
+
+    <main class="container">
+        <section id="welcome-screen" class="screen active fade-in">
+            <h1>Descubre tu Vocación!</h1>
+            <p>Este test te ayudará a encontrar la carrera ideal para ti basándose en tus gustos, habilidades e intereses.</p>
+            <button id="start-btn" class="btn-primary">Comenzar Test</button>
+        </section>
+
+        <section id="question-screen" class="screen">
+            <button id="back-btn" class="btn-secondary hidden">← Volver</button>
+            <div id="question-container" class="slide-in">
+                <h2 id="question-text">Pregunta</h2>
+                <div id="options-container" class="options-grid">
+                    </div>
+            </div>
+            <div class="progress-bar">
+                <div id="progress-fill"></div>
+            </div>
+        </section>
+
+        <section id="result-screen" class="screen fade-in">
+            <h2>Tus Resultados...</h2>
+            <p id="result-description">Basado en tus respuestas, tu perfil se orienta hacia:</p>
+            <h3 id="dominant-area">Área</h3>
+            
+            <div class="careers-grid">
+                <div class="career-card">
+                    <h4>Profesorados</h4>
+                    <ul id="list-profesorados"></ul>
+                </div>
+                <div class="career-card">
+                    <h4>Tecnicaturas</h4>
+                    <ul id="list-tecnicaturas"></ul>
+                </div>
+                <div class="career-card">
+                    <h4>Carreras Universitarias</h4>
+                    <ul id="list-universitarias"></ul>
+                </div>
+            </div>
+            
+            <button id="restart-btn" class="btn-primary">Volver a empezar</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

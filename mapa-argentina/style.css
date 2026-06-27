@@ -1,0 +1,332 @@
+/* Variables con colores patrios */
+:root {
+    --celeste: #75AADB;
+    --blanco: #FFFFFF;
+    --sol: #F6B40E;
+    --texto-oscuro: #333333;
+    --fondo-gris: #F4F7F6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--fondo-gris);
+    color: var(--texto-oscuro);
+    line-height: 1.6;
+}
+
+/* --- Pantalla de Bienvenida --- */
+/* --- Pantalla de Bienvenida --- */
+.welcome-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    
+      background-image:
+                url('https://i.pinimg.com/originals/41/6f/02/416f028924b137b5a383aee13ca43085.gif');
+    
+    background-size: cover; /* Hace que el GIF llene la pantalla de forma proporcional */
+    background-position: center; /* Centra el GIF */
+    background-repeat: no-repeat; /* Evita que el GIF se repita como mosaico */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+}
+
+.welcome-content {
+    background-color: var(--blanco);
+    padding: 3rem;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border-top: 8px solid var(--sol);
+}
+
+.welcome-content h1 {
+    color: var(--celeste);
+    margin-bottom: 1rem;
+}
+
+#start-btn {
+    margin-top: 1.5rem;
+    padding: 10px 25px;
+    background-color: var(--sol);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+#start-btn:hover {
+    background-color: #d99d0a;
+    transform: scale(1.05);
+}
+
+/* --- Layout Principal --- */
+header {
+    background-color: var(--celeste);
+    color: var(--blanco);
+    text-align: center;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 2rem auto;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.map-section {
+    flex: 2;
+    min-width: 300px;
+}
+
+.map-section h2 {
+    margin-bottom: 1rem;
+    color: var(--celeste);
+}
+
+/* --- Mapa SVG --- */
+.map-container svg {
+    width: 100%;
+    max-height: 80vh;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+.lago-svg {
+    fill: var(--fondo-gris);
+    stroke: var(--celeste);
+    stroke-width: 1;
+}
+/* --- Mapa SVG (Corregido sin Glitch) --- */
+.provincia-svg {
+    fill: var(--celeste);
+    stroke: var(--blanco);
+    stroke-width: 2;
+    cursor: pointer;
+    /* Quitamos el 'transform' de la transición para evitar el salto */
+    transition: fill 0.2s ease, stroke-width 0.2s ease;
+}
+
+/* Efecto al pasar el mouse (hover) */
+.provincia-svg:hover {
+    fill: var(--sol);
+    stroke-width: 3; /* Engrosamos el borde en lugar de hacerla saltar */
+}
+
+/* Clase activa cuando hacemos clic */
+.provincia-svg.active {
+    fill: var(--sol);
+    stroke-width: 4;
+}
+
+/* --- Panel de Información --- */
+.info-panel {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 6px solid var(--celeste);
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+}
+
+.info-panel h2 {
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--fondo-gris);
+    padding-bottom: 0.5rem;
+}
+
+.info-content h3 {
+    color: var(--sol);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.info-content p {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.placeholder-text {
+    color: #888;
+    font-style: italic;
+    text-align: center;
+}
+/* --- Estilos para la Bandera --- */
+#prov-flag {
+    display: none; /* Oculta al principio */
+    width: 120px; /* Tamaño de la bandera */
+    height: auto;
+    margin: 0 auto 1rem auto; /* Centrada y con espacio abajo */
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+/* Alineamos el contenido del panel al centro para que la bandera quede bien */
+.info-content {
+    text-align: center;
+}
+
+.info-content p {
+    text-align: left; /* Devolvemos el texto a la izquierda */
+}
+
+#prov-name, #prov-capital, #prov-pop, #prov-econ {
+    display: none;
+}
+
+/* --- Ajustes para Celulares (Responsive) --- */
+@media (max-width: 768px) {
+    .map-container svg {
+        height: auto;
+        max-height: 70vh;
+        touch-action: manipulation;
+    }
+
+    .container {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+    
+    .map-section, .info-panel {
+        width: 100%;
+    }
+
+    .info-panel {
+        position: static;
+        margin-top: 1rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .welcome-content {
+        width: 90%;
+        padding: 2rem 1.5rem;
+    }
+    
+    .welcome-content h1 {
+        font-size: 1.8rem;
+    }
+}
+/* --- Animaciones de Entrada del Contenido --- */
+
+/* Escondemos el título y el mapa al principio y los bajamos 40px */
+header, .container {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Esta clase se la agregaremos al body con JavaScript para iniciar la animación */
+body.content-active header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body.content-active .container {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s; /* Hace que el mapa entre un instante después del título */
+}
+.seccion-malvinas {
+  max-width: 800px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.contenedor-mapa {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.mapa-imagen {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: crosshair; /* Cambiamos el cursor para que parezca una mira al buscar coordenadas */
+}
+
+.punto-mapa {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: #74acdf;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  z-index: 10; /* Nos aseguramos de que los puntos estén por encima de la imagen */
+}
+
+.punto-mapa:hover {
+  background-color: #f6b40e;
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+.caja-info {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-left: 4px solid #74acdf;
+  border-radius: 4px;
+  text-align: left;
+  min-height: 40px;
+  font-size: 16px;
+}
+
+.contenedor-preguntas {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.contenedor-preguntas h3 {
+  color: #333;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+details {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+summary {
+  font-weight: bold;
+  font-size: 16px;
+  color: #0056b3;
+  outline: none;
+}
+
+details ul {
+  margin-top: 10px;
+  padding-left: 25px;
+  line-height: 1.6;
+  color: #444;
+}

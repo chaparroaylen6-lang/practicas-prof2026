@@ -1,0 +1,237 @@
+/* Portfolio - Tema Rosita Pastel Pro */
+:root {
+    --bg-color: #fff5f7;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --accent: #ff7fbf;
+    --accent-hover: #ff5caa;
+    --accent-2: #ffd6e8;
+    --text-main: #3b2130;
+    --muted: #9b6b7a;
+    --glass-border: rgba(255, 127, 191, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    color: var(--text-main);
+    background: var(--bg-color);
+    background-image: radial-gradient(at 0% 0%, hsla(339,100%,94%,1) 0, transparent 50%), 
+                      radial-gradient(at 100% 100%, hsla(339,100%,89%,1) 0, transparent 50%);
+    min-height: 100vh;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Encabezado */
+.site-header {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 2rem 5%;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--text-main), var(--accent));
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+
+.banner-section {
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+.banner-img {
+    width: 100%;
+    height: 250px; 
+    object-fit: cover; 
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(59, 33, 48, 0.05);
+    border: 1px solid var(--glass-border);
+}
+
+
+.card-thumb {
+    width: 100%;
+    height: 160px; 
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 127, 191, 0.1);
+    transition: transform 0.3s ease;
+}
+
+
+.card:hover .card-thumb {
+    transform: scale(1.02);
+}
+
+@media (max-width: 640px) {
+    .banner-img {
+        height: 150px;
+    }
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 5%;
+}
+
+.portfolio-section {
+    margin-bottom: 4rem;
+}
+
+.section-header {
+    margin-bottom: 2rem;
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.divider {
+    height: 4px;
+    width: 60px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin-top: 8px;
+}
+
+/* Grilla de Proyectos */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+/* Tarjetas (Glassmorphism) */
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(59, 33, 48, 0.05);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(255, 127, 191, 0.15);
+    border-color: var(--accent);
+}
+
+.card-content h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    color: var(--text-main);
+}
+
+.card-content p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.tag {
+    display: inline-block;
+    background: var(--accent-2);
+    color: var(--accent-hover);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+    transform: scale(1.02);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+}
+
+.btn-outline:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-top: 1px solid var(--glass-border);
+    margin-top: 2rem;
+}
+
+.site-footer p {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.footer-sub {
+    color: var(--muted) !important;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    font-weight: 400 !important;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .brand h1 {
+        font-size: 1.8rem;
+    }
+    .projects {
+        grid-template-columns: 1fr;
+    }
+    .container {
+        padding: 2rem 5%;
+    }
+}
