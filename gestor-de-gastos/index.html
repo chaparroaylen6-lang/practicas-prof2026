@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de gastos</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="barra">
+    <h1>Gestor de gastos</h1>
+    <p class="sub">Registro personal de movimientos</p>
+  </header>
+
+  <main class="contenedor">
+    <form id="form" class="tarjeta form">
+  <h2 id="tituloForm">Nuevo gasto</h2>
+
+  <div class="campos">
+    <label>
+      Descripción
+      <input type="text" id="descripcion" required maxlength="40" placeholder="Supermercado">
+    </label>
+
+    <label>
+      Monto
+      <input type="number" id="monto" required min="0.01" step="0.01" placeholder="0.00">
+    </label>
+
+    <label>
+      Categoría
+      <select id="categoria" required>
+        <option value="comida">Comida</option>
+        <option value="transporte">Transporte</option>
+        <option value="servicios">Servicios</option>
+        <option value="ocio">Ocio</option>
+        <option value="otros">Otros</option>
+      </select>
+    </label>
+
+    <label>
+      Fecha
+      <input type="date" id="fecha" required>
+    </label>
+  </div>
+
+  <p class="error" id="error"></p>
+
+  <div class="acciones">
+    <button type="submit" class="btn btn-primario" id="btnGuardar">Agregar gasto</button>
+    <button type="button" class="btn btn-fantasma oculto" id="btnCancelar">Cancelar</button>
+  </div>
+</form>
+<section class="tarjeta">
+  <div class="herramientas">
+    <input type="search" id="busqueda" placeholder="Buscar por descripción...">
+    <select id="filtroCategoria">
+      <option value="todas">Todas las categorías</option>
+      <option value="comida">Comida</option>
+      <option value="transporte">Transporte</option>
+      <option value="servicios">Servicios</option>
+      <option value="ocio">Ocio</option>
+      <option value="otros">Otros</option>
+    </select>
+  </div>
+  <table class="tabla">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Descripción</th>
+        <th>Categoría</th>
+        <th class="der">Monto</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="lista"></tbody>
+  </table>
+  <section class="tarjeta resumen">
+  <div class="metricas">
+    <div class="metrica">
+      <span class="etiqueta">Total gastado</span>
+      <strong id="total">$ 0</strong>
+    </div>
+    <div class="metrica">
+      <span class="etiqueta">Movimientos</span>
+      <strong id="cantidad">0</strong>
+    </div>
+    <div class="metrica">
+      <span class="etiqueta">Promedio</span>
+      <strong id="promedio">$ 0</strong>
+    </div>
+  </div>
+
+  <div id="porCategoria" class="por-categoria"></div>
+</section>
+  <p class="vacio oculto" id="vacio">No hay gastos que coincidan con la búsqueda.</p>
+</section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
