@@ -1,0 +1,125 @@
+/* Contenedor principal */
+.gallery-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Separación elegante entre las imágenes */
+  padding: 5rem 5%;
+  background-color: var(--bg-main);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Estilo para cada ítem (Las "ventanas") */
+.gallery-item {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+  height: 450px; /* Altura fija para que todas se vean uniformes */
+  border-radius: 24px; /* Bordes suaves */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(229, 169, 180, 0.15);
+  cursor: pointer;
+}
+
+/* Imagen con efecto de zoom suave al pasar el ratón */
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.gallery-item:hover .gallery-image {
+  transform: scale(1.08);
+}
+
+/* Capa superpuesta para suavizar la imagen y dar un tono rosado/cálido */
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(252, 231, 236, 0.1) 0%,
+    rgba(90, 70, 76, 0.6) 100%
+  );
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 0.8; /* Se oscurece ligeramente al pasar el mouse para destacar el texto */
+}
+
+/* Texto centrado y estilizado */
+.gallery-text {
+  position: absolute;
+  bottom: 15%; /* En lugar de estar en el medio, lo bajamos para un look más editorial */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: var(--white);
+  z-index: 2;
+  padding: 0 1.5rem;
+}
+
+.gallery-text h2 {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  margin: 0 0 10px 0;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--pink-light);
+}
+
+.gallery-text h1 {
+  font-family: var(--font-title);
+  font-size: 2.2rem;
+  margin: 0;
+  line-height: 1.2;
+  font-weight: 400;
+  text-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* La palabra clave en color rosa pastel en lugar de morado */
+.gallery-text span {
+  color: var(--pink-accent);
+  font-style: italic;
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
+  .gallery-item {
+    height: 380px;
+  }
+  .gallery-text h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 3rem 1.5rem;
+    flex-direction: column;
+  }
+
+  .gallery-item {
+    height: 350px;
+    width: 100%;
+  }
+
+  .gallery-text {
+    bottom: 20%;
+  }
+
+  .gallery-text h1 {
+    font-size: 2rem;
+  }
+
+  .gallery-text h2 {
+    font-size: 0.85rem;
+  }
+}

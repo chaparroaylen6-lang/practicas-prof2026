@@ -1,0 +1,150 @@
+/* Contenedor principal */
+.main-content {
+  padding: 5rem 5%;
+  background-color: var(--bg-main); /* Aseguramos el fondo etéreo */
+  min-height: 80vh; /* Para que la página no se vea vacía si hay pocos productos */
+}
+
+.collections {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Título de la colección */
+.collections h2 {
+  font-family: var(--font-title);
+  font-size: 2.8rem;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 4.5rem;
+  font-style: italic;
+  font-weight: 400;
+  position: relative;
+}
+
+/* Detalle floral bajo el título */
+.collections h2::after {
+  content: '✧ ❀ ✧';
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  color: var(--pink-accent);
+  letter-spacing: 5px;
+  font-style: normal;
+}
+
+/* Cuadrícula de productos (Grid) */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2.5rem;
+}
+
+/* Tarjeta de producto */
+.product-card {
+  background-color: var(--white);
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+  box-shadow: 0 10px 30px rgba(229, 169, 180, 0.15); /* Sombra rosita y difuminada */
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid transparent;
+}
+
+/* Efecto al pasar el mouse por la tarjeta */
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(229, 169, 180, 0.25);
+  border: 1px solid var(--pink-light);
+}
+
+
+/* Imagen del producto */
+.product-image {
+  width: 100%;
+  height: 220px;
+  object-fit: contain; /* Fundamental para que los frascos no se aplasten */
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.08); /* Zoom sutil */
+}
+
+/* Título del producto */
+.product-title {
+  font-family: var(--font-title);
+  color: var(--text-dark);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Precio del producto */
+.product-price {
+  font-family: var(--font-body);
+  color: var(--pink-accent); /* Usamos el rosa de la marca, adiós al celeste */
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* Mensaje si no hay productos */
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 1.2rem;
+  padding: 3rem;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .collections h2 {
+    font-size: 2.5rem;
+  }
+  .products {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 3rem 1.5rem;
+  }
+  .collections h2 {
+    font-size: 2.2rem;
+  }
+  .products {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Tarjetas más compactas */
+    gap: 1.2rem;
+  }
+  .product-card {
+    padding: 1.5rem 1rem 1rem 1rem;
+    border-radius: 16px;
+  }
+  .product-image {
+    height: 160px;
+  }
+  .product-title {
+    font-size: 1rem;
+  }
+  .product-price {
+    font-size: 0.95rem;
+  }
+}

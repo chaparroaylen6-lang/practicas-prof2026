@@ -1,0 +1,102 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  background-color: var(--bg-main); /* Fondo crema/rosado muy claro */
+  border-bottom: 1px solid var(--pink-light); /* Línea divisoria súper sutil */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(229, 169, 180, 0.05); /* Sombra rosita casi invisible */
+}
+
+.logo-navbar {
+  width: 120px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.logo-navbar:hover {
+  opacity: 0.7; /* Efecto elegante al pasar el mouse por el logo */
+}
+
+.navbar {
+  flex: 1;
+  margin-left: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem; /* Un poco más de espacio para respirar */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--pink-accent); /* Rosa en lugar del morado original */
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem; /* Un poco más grande para destacar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.icon-button:hover {
+  color: var(--pink-accent);
+  transform: translateY(-2px); /* Pequeño salto elegante */
+}
+
+/* Contador del carrito rediseñado */
+.counter {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--white);
+  background-color: var(--pink-accent);
+  border: 2px solid var(--bg-main); /* Borde del mismo color que el fondo para crear un recorte */
+}
+
+/* Responsive: Teléfonos (Pantallas menores a 768px) */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 5%;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}

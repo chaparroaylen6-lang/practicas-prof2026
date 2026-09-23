@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap');
+
+:root {
+  /* Paleta Soft Pink */
+  --bg-main: #FFF8F9;       /* Fondo principal súper claro */
+  --pink-light: #FCE7EC;    /* Rosa pastel para tarjetas/fondos secundarios */
+  --pink-accent: #E5A9B4;   /* Rosa un poco más oscuro para botones/bordes */
+  --text-dark: #5A464C;     /* En lugar de negro, un café/rojizo muy oscuro y elegante */
+  --text-muted: #8F7B81;    /* Para subtítulos */
+  --white: #FFFFFF;
+  
+  /* Fuentes */
+  --font-title: 'Playfair Display', serif; /* Elegante para títulos */
+  --font-body: 'Poppins', sans-serif;      /* Limpia para descripciones */
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+}

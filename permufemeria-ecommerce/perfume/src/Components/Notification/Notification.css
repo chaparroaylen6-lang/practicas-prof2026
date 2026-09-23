@@ -1,0 +1,107 @@
+/* General */
+.notification {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 320px;
+  padding: 18px 24px;
+  border-radius: 16px; /* Bordes mucho más suaves */
+  z-index: 1000;
+  overflow: hidden;
+  animation: slideInFadeOut 3.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  
+  /* Efecto Glassmorphism elegante */
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(229, 169, 180, 0.4);
+  box-shadow: 0 15px 35px rgba(90, 70, 76, 0.1);
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.notification i {
+  font-size: 1.4rem;
+}
+
+.notification span {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+/* Colores de iconos y fondos sutiles según tipo */
+/* Éxito: Tonos rosados/crema de la marca */
+.notification-success {
+  border-left: 4px solid var(--pink-accent);
+}
+.notification-success i {
+  color: var(--pink-accent);
+}
+
+/* Error: Un terracota/borgoña suave en lugar de rojo chillón */
+.notification-error {
+  border-left: 4px solid #b85c67;
+}
+.notification-error i {
+  color: #b85c67;
+}
+
+/* Advertencia: Un tono durazno/oro en lugar de naranja */
+.notification-warning {
+  border-left: 4px solid #d4a373;
+}
+.notification-warning i {
+  color: #d4a373;
+}
+
+/* Barra de progreso rediseñada */
+.notification-progress {
+  position: absolute;
+  bottom: 0; /* Pasamos la barra abajo para un look más moderno */
+  left: 0;
+  height: 4px;
+  width: 100%;
+  animation: progressBar 3s linear forwards;
+  border-bottom-left-radius: 16px;
+}
+
+.notification-progress-success {
+  background-color: var(--pink-accent);
+}
+.notification-progress-error {
+  background-color: #b85c67;
+}
+.notification-progress-warning {
+  background-color: #d4a373;
+}
+
+/* Animaciones más fluidas */
+@keyframes progressBar {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+@keyframes slideInFadeOut {
+  0% {
+    opacity: 0;
+    transform: translateX(50px) translateY(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(50px) translateY(-10px);
+  }
+}
