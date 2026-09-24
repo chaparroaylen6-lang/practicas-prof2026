@@ -342,3 +342,86 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* --- CARTA DE ESPECIALIDADES (MENÚ EXTRA SPEAKEASY) --- */
+.speakeasy-extras {
+    margin: 30px auto 0;
+    padding: 20px;
+    background: rgba(21, 21, 24, 0.6); /* Fondo oscuro semitransparente */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    max-width: 600px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.extras-title {
+    color: var(--accent-main);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px var(--neon-glow);
+}
+
+.extras-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.extra-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #050505;
+    padding: 8px 20px 8px 8px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+}
+
+.extra-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid var(--accent-main);
+    box-shadow: 0 0 10px var(--neon-glow);
+    transition: all 0.4s ease;
+}
+
+.extra-icon img {
+    width: 120%;
+    height: 120%;
+    object-fit: cover;
+    filter: brightness(0.8);
+    transition: all 0.4s ease;
+}
+
+/* Efecto al pasar el cursor (Hover) */
+.extra-btn:hover {
+    border-color: var(--accent-main);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--neon-glow);
+}
+
+.extra-btn:hover .extra-icon {
+    background: var(--accent-main);
+    box-shadow: 0 0 15px var(--accent-main);
+}
+
+.extra-btn:hover .extra-icon img {
+    filter: brightness(1.2);
+}
