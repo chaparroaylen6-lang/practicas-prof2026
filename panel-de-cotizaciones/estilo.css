@@ -1,0 +1,80 @@
+:root {
+  --bg: #0f1115;
+  --panel: #181b24;
+  --linea: #272b38;
+  --texto: #e8eaf2;
+  --apagado: #99a1b5;
+  --acento: #22d3ee;
+  --ok: #34d399;
+  --alerta: #f87171;
+  --advertencia: #fbbf24;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--texto);
+  min-height: 100vh;
+}
+
+.barra {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 20px 24px; border-bottom: 1px solid var(--linea);
+}
+.barra h1 { font-size: 1.3rem; }
+.sub { color: var(--apagado); font-size: 0.82rem; }
+#avisoCache { color: var(--advertencia); font-style: italic; }
+
+.btn {
+  padding: 8px 16px; font-size: 0.88rem; font-family: inherit;
+  font-weight: 600; background: var(--acento); color: #06232a;
+  border: none; border-radius: 8px; cursor: pointer;
+}
+.btn:disabled { opacity: 0.5; cursor: wait; }
+
+.contenedor { max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
+.tarjeta { background: var(--panel); border: 1px solid var(--linea); border-radius: 12px; padding: 18px; }
+
+.grilla {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px;
+}
+
+.mas-barato { border-color: var(--ok); box-shadow: 0 0 10px rgba(52, 211, 153, 0.1); }
+.mas-barato h3::after { content: ' (Más barato)'; font-size: 0.7rem; color: var(--ok); }
+.mas-caro { border-color: var(--alerta); box-shadow: 0 0 10px rgba(248, 113, 113, 0.1); }
+.mas-caro h3::after { content: ' (Más caro)'; font-size: 0.7rem; color: var(--alerta); }
+
+.cotizacion h3 { font-size: 0.95rem; margin-bottom: 12px; }
+.valores { display: flex; gap: 20px; }
+.valor { display: flex; flex-direction: column; gap: 2px; }
+.valor .etiqueta { font-size: 0.7rem; color: var(--apagado); text-transform: uppercase; }
+.valor strong { font-size: 1.25rem; }
+
+.brecha { margin-top: 12px; font-size: 0.78rem; color: var(--apagado); }
+.sube { color: var(--alerta); }
+.baja { color: var(--ok); }
+
+
+.esqueletos { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+.esqueleto { height: 128px; background: var(--panel); border: 1px solid var(--linea); border-radius: 12px; animation: latido 1.4s ease-in-out infinite; }
+@keyframes latido { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+
+.error { border-color: var(--alerta); text-align: center; }
+.error h2 { font-size: 1.05rem; margin-bottom: 8px; }
+.error p { color: var(--apagado); font-size: 0.88rem; margin-bottom: 14px; }
+
+
+.conversor { margin-top: 18px; }
+.conversor h2 { font-size: 1rem; margin-bottom: 14px; }
+.fila-conversor { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+label { display: flex; flex-direction: column; gap: 5px; font-size: 0.78rem; color: var(--apagado); flex: 1; min-width: 120px; }
+input, select { padding: 9px 11px; font-size: 0.95rem; font-family: inherit; color: var(--texto); background: var(--bg); border: 1px solid var(--linea); border-radius: 8px; }
+
+.grafico-historico { margin-top: 18px; }
+.grafico-historico h2 { font-size: 1rem; margin-bottom: 14px; }
+.svg-grafico { width: 100%; max-height: 150px; overflow: visible; margin-top: 10px; }
+.svg-grafico polyline { vector-effect: non-scaling-stroke; }
+
+.oculto { display: none; }

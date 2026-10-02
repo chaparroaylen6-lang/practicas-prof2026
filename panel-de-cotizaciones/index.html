@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizaciones del dólar</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header class="barra">
+        <div>
+            <h1>Cotizaciones</h1>
+            <p class="sub" id="actualizado">- <span id="avisoCache"></span></p>
+        </div>
+        <button class="btn" id="btnActualizar">Actualizar</button>
+    </header>
+
+    <main class="contenedor">
+        <div id="cargando" class="estado">
+            <div class="esqueletos">
+                <div class="esqueleto"></div>
+                <div class="esqueleto"></div>
+                <div class="esqueleto"></div>
+                <div class="esqueleto"></div>
+            </div>
+        </div>
+
+
+        <div id="error" class="estado tarjeta error oculto">
+            <h2>No se pudieron cargar las cotizaciones</h2>
+            <p id="mensajeError">-</p>
+            <button class="btn" id="btnReintentar">Reintentar</button>
+        </div>
+
+        <div id="datos" class="oculto">
+            <div class="grilla" id="grilla"></div>
+
+            <section class="tarjeta conversor">
+                <h2>Conversor Bidireccional</h2>
+                <div class="fila-conversor">
+                    <label>
+                        Pesos
+                        <input type="number" id="pesos" min="0" step="100" placeholder="0">
+                    </label>
+                    <span class="igual">=</span>
+                    <label>
+                        Dólares
+                        <input type="number" id="dolares" min="0" step="1" placeholder="0">
+                    </label>
+                    <label>
+                        Cotización
+                        <select id="casaConversor"></select>
+                    </label>
+                </div>
+            </section>
+
+           
+            <section class="tarjeta grafico-historico">
+                <h2>Evolución Dólar Blue (últimos 30 días)</h2>
+                <div id="contenedorGrafico">Cargando gráfico...</div>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
